@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 namespace DailyStatusCollector
 {
@@ -11,7 +12,7 @@ namespace DailyStatusCollector
             var storage = new Storage();
             var commitRepository = new CommitRepository(storage);
             var @interface = new Interface(commitRepository);
-            @interface.Menu();
+            @interface.Command(args.First());
         }
     }
 }

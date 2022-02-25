@@ -12,11 +12,8 @@ namespace DailyStatusCollector
             _repository = repository;
         }
 
-        public void Menu()
+        public void Command(string command)
         {
-            Console.Write("$ ");
-
-            var command = Console.ReadLine();
             switch (command)
             {
                 case "get":
@@ -28,9 +25,16 @@ namespace DailyStatusCollector
             }
         }
 
+        private void Menu()
+        {
+            Console.Write("$ ");
+            var command = Console.ReadLine();
+            Command(command);
+        }
+
         private void ShowHelp()
         {
-            Console.WriteLine("Help ... todo ...");
+            Console.WriteLine("\nAvailable command: daily get\n");
         }
 
         private void ShowCommits()
