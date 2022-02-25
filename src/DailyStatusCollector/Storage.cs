@@ -19,6 +19,6 @@ namespace DailyStatusCollector
             File.ReadAllLines(FileName);
 
         public void AppendLine(string text) =>
-            File.AppendAllText(FileName, $"\n{text}");
+            File.AppendAllText(FileName, $"{text}\n");
     }
 }
