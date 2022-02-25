@@ -1,16 +1,17 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace DailyStatusCollector
 {
     internal class CommitRepository
     {
-        public IEnumerable<Commit> Get()
-        {
-            return new []
-            {
-                new Commit("Code review od PR-777 done."),
-                new Commit("Created PR-888")
-            };
-        }
+        private readonly Storage _reader;
+
+        public CommitRepository(Storage reader) => _reader = reader;
+
+        public IEnumerable<Commit> Get() =>
+            _reader
+                .ReadAllLines()
+                .Select(x => new Commit(x));
     }
 }
