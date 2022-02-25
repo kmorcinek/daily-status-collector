@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace DailyStatusCollector
 {
@@ -12,7 +13,15 @@ namespace DailyStatusCollector
             _repository = repository;
         }
 
-        public void Command(string command)
+        public void Convas(string[] commands)
+        {
+            if(commands?.Any() == true)
+                Command(commands.First());
+            else
+                Menu();
+        }
+
+        private void Command(string command)
         {
             switch (command)
             {
