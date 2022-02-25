@@ -5,10 +5,12 @@ namespace DailyStatusCollector
 {
     internal class Storage
     {
+        private const string FileName = "storage";
+
         public IEnumerable<string> ReadAllLines() =>
-            File.ReadAllLines("storage");
+            File.ReadAllLines(FileName);
 
         public void AppendLine(string text) =>
-            File.AppendAllText("storage", $"\n{text}");
+            File.AppendAllText(FileName, $"\n{text}");
     }
 }
