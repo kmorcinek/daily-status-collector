@@ -6,7 +6,7 @@ namespace DailyStatusCollector
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello Daily Status Collector!");
+            Console.WriteLine("\nHello Daily Status Collector!\n");
 
             var commitRepository = new CommitRepository();
             var @interface = new Interface(commitRepository);
