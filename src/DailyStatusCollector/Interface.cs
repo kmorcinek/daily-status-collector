@@ -13,32 +13,38 @@ namespace DailyStatusCollector
             _repository = repository;
         }
 
-        public void Canvas(string[] commands)
+        public void Canvas(string[] commandLineArgs)
         {
-            if(commands?.Any() == true)
-                Command(commands.First());
+            if(commandLineArgs?.Any() == true)
+            {
+                Command(commandLineArgs.First(), commandLineArgs.Skip(1));
+            }
             else
-                Menu();
+            {
+                ShowHelp();
+            }
         }
 
-        private void Command(string command)
+        private void Command(string command, IEnumerable<string> arguments)
         {
             switch (command)
             {
                 case "get":
                     ShowCommits();
                     break;
+                case "add":
+                    bool isThereAnyArgument = arguments.Count() > 0;
+                    if(isThereAnyArgument)
+                    {
+                        AddCommit(arguments.First());
+                        break;
+                    }
+                    ShowHelp();
+                    break;
                 default:
                     ShowHelp();
                     break;
             }
-        }
-
-        private void Menu()
-        {
-            Console.Write("$ ");
-            var command = Console.ReadLine();
-            Command(command);
         }
 
         private void ShowHelp()
@@ -56,6 +62,11 @@ namespace DailyStatusCollector
         {
             foreach (var commit in commits)
                 Console.WriteLine($"> {commit.Text}");
+        }
+
+        private void AddCommit(string text)
+        {
+            _repository.Add(new Commit(text));
         }
     }
 }
