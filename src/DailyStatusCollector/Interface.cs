@@ -13,7 +13,7 @@ namespace DailyStatusCollector
             _repository = repository;
         }
 
-        public void Convas(string[] commands)
+        public void Canvas(string[] commands)
         {
             if(commands?.Any() == true)
                 Command(commands.First());
