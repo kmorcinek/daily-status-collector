@@ -12,7 +12,7 @@ namespace DailyStatusCollector
             var storage = new Storage();
             var commitRepository = new CommitRepository(storage);
             var @interface = new Interface(commitRepository);
-            @interface.Command(args.First());
+            @interface.Convas(args);
         }
     }
 }
