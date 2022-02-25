@@ -7,6 +7,14 @@ namespace DailyStatusCollector
     {
         private const string FileName = "storage";
 
+        public void Init()
+        {
+            if(File.Exists(FileName) == false) 
+            {
+                using var file = File.Create(FileName);
+            }
+        }
+
         public IEnumerable<string> ReadAllLines() =>
             File.ReadAllLines(FileName);
 
